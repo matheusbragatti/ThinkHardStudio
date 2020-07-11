@@ -29,6 +29,7 @@ public class FillAMeterGame : MonoBehaviour
         controller = mainController.GetComponent<Controller>();
         meterCurrentAmount = 0;
         meterGauge.maxValue = meterMaxAmount;
+
         //currentControl = "";
         timer = 0f;
     }
@@ -54,12 +55,12 @@ public class FillAMeterGame : MonoBehaviour
             }
             if(meterCurrentAmount >= meterMaxAmount)
             {
-                //controller.gameWin();
+                //controller.miniGameWon();
             }
         }
         else if (timer > timeLimit)
         {
-            //controller.gameLoss();
+            //controller.miniGameLost();
         }
 
         meterAmountValue.text = meterCurrentAmount.ToString("F0") + "%";
