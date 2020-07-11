@@ -19,11 +19,14 @@ public class BirdController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         downRotation = Quaternion.Euler(0, 0, -60);
         forwardRotation = Quaternion.Euler(0, 0, 40);
-        //rigidbody.simulated = false;
+        rigidbody.simulated = false;
     }
 
     void Update()
     {
+        if (!CountdownController.gameBegan) return;
+        else rigidbody.simulated = true;
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             transform.rotation = forwardRotation;
