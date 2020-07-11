@@ -50,7 +50,7 @@ public class FillAMeterGame : MonoBehaviour
         }
         else
         {
-            controller.
+            //controller.endGame();
         }
 
     }
