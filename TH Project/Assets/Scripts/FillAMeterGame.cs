@@ -54,12 +54,12 @@ public class FillAMeterGame : MonoBehaviour
             }
             if(meterCurrentAmount >= meterMaxAmount)
             {
-                //controller.changeGame;
+                //controller.gameWin();
             }
         }
         else if (timer > timeLimit)
         {
-            //controller.endGame();
+            //controller.gameLoss();
         }
 
         meterAmountValue.text = meterCurrentAmount.ToString("F0") + "%";
