@@ -24,40 +24,94 @@ public class DrawGunMinigame : MonoBehaviour
 
     bool drawn = false;
 
+    bool textShow = false;
+
     // Start is called before the first frame update
+    public GameObject textFire;
+
+    public GameObject textBox;
+
+    public GameObject m_otherScript;
+
+    public Effects other;
+    
+    
     void Start()
     {
         mainController = GameObject.FindGameObjectWithTag("GameController");
         controller = mainController.GetComponent<Controller>();
+         
+        //other = GameObject.Find("Passer");
         
-        timer = 0;
-        timeLimit = Random.Range(2f, 4f);
+        other.selectEffect("mouse");
+        //other.GetComponent
+
+
+        //text.gameObject.SetActive(false);
+        //CanvasGroup.alpha = 0f;
+        textFire = GameObject.Find("Fire-Text");
+        Debug.Log("TETSING: " + textFire);
+      //  GetComponent(textFire).enabled = false;
+        //textFire.GetComponent<Text>().enabled = false;
+        
+        textFire.SetActive(false);
+
+
+        //textFire.enabled = false;
+        // timer = 0;
+        // timeLimit = Random.Range(2f, 4f);
         startCountDown();
     }
+
+
+    public bool allowClick = true;
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
-            Debug.Log("Pressed primary button.");
 
-        if (Input.GetMouseButtonDown(1))
-            Debug.Log("Pressed secondary button.");
-
-        if (Input.GetMouseButtonDown(2))
-            Debug.Log("Pressed middle click.");
-
-
-        if (CountdownController.gameBegan)
-            timer += Time.deltaTime;
-
-        if (timer > timeLimit)
+        if(textShow == true)
         {
-            drawn = true;
-            startCountDown();
-            //controller.gameLoss();
+            textFire.SetActive(true);
         }
+
+
+        if(allowClick)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Pressed primary button.");
+                if(drawn == true)
+                {
+                    Debug.Log("WON!");
+                    //controller.miniGameWon();
+                    
+                }
+                else
+                {
+                    Debug.Log("LOST....");
+                    //controller.miniGameLost();
+                }
+
+
+                allowClick = false;
+            }
+           
+
+        }
+        
+  
+
+        // if (CountdownController.gameBegan)
+        //     timer += Time.deltaTime;
+
+        // if (timer > timeLimit)
+        // {
+        //     drawn = true;
+        //     startCountDown();
+        //     //controller.gameLoss();
+        // }
 
         // if(bird.gameOver)
         // {
@@ -69,7 +123,8 @@ public class DrawGunMinigame : MonoBehaviour
     {
         System.Timers.Timer aTimer = new System.Timers.Timer();
         aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-        aTimer.Interval = 3000;
+        timeLimit = Random.Range(2000, 4000);
+        aTimer.Interval = timeLimit;
         aTimer.Enabled = true;
         aTimer.Start();
 
@@ -80,29 +135,26 @@ public class DrawGunMinigame : MonoBehaviour
         
     }
 
+    public bool timeUP = true;
+
     private void OnTimedEvent(object source, ElapsedEventArgs e)
     {
-        drawn = true;
+        if(timeUP == true)
+        {
+            Debug.Log("TIME UP");
+            drawn = true;
+            // textFire = GameObject.Find("Fire-Text");
+            // textFire.SetActive(true);
+            timeUP = false;
+            textShow = true;
+            
+        }
+        
         
         //Console.WriteLine("Hello World!");
     }
 
 
-    // void OnMouseDown(){
-    //     //Check to see if the enemy pulled their gun and 
-    //     //then reply either true or false
-    //     if(drawn == true)
-    //     {
-
-    //     }
-    //     else
-    //     {
-    //         controller.gameLoss();
-    //     }
-
-    //       state = !state; 
-    //       panel.gameObject.SetActive (state);
-    //     //Debug.log("I CLICKED");
-    // }
+   
 
 }
