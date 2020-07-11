@@ -12,7 +12,7 @@ public class Controller : MonoBehaviour
 
     private void Awake()
     {
-       //Make this object a singleton.
+
     }
 
 
@@ -24,7 +24,7 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void changeLives(int value)
