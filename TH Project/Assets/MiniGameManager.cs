@@ -19,10 +19,9 @@ public class MiniGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(miniGamesLives <= 0)
-        {
-            controller.lifeCounter -= 1;
-        }
+        //Player Movement
+
+
     }
 
 }
