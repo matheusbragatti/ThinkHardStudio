@@ -27,21 +27,32 @@ public class DrawGunMinigame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainController = GameObject.FindGameObjectWithTag("GameController");
-        controller = mainController.GetComponent<Controller>();
+         mainController = GameObject.FindGameObjectWithTag("GameController");
+         controller = mainController.GetComponent<Controller>();
         
-        timer = 0;
-        timeLimit = Random.Range(2f, 4f);
-        startCountDown();
+        // timer = 0;
+        // timeLimit = Random.Range(2f, 4f);
+        //startCountDown();
     }
+
+
+    public bool allowClick = true;
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
-            Debug.Log("Pressed primary button.");
+        if(allowClick)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Pressed primary button.");
+                allowClick = false;
+            }
+           
 
+        }
+        
         if (Input.GetMouseButtonDown(1))
             Debug.Log("Pressed secondary button.");
 
@@ -49,15 +60,15 @@ public class DrawGunMinigame : MonoBehaviour
             Debug.Log("Pressed middle click.");
 
 
-        if (CountdownController.gameBegan)
-            timer += Time.deltaTime;
+        // if (CountdownController.gameBegan)
+        //     timer += Time.deltaTime;
 
-        if (timer > timeLimit)
-        {
-            drawn = true;
-            startCountDown();
-            //controller.gameLoss();
-        }
+        // if (timer > timeLimit)
+        // {
+        //     drawn = true;
+        //     startCountDown();
+        //     //controller.gameLoss();
+        // }
 
         // if(bird.gameOver)
         // {
