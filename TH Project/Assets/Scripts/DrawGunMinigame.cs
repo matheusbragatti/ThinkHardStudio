@@ -44,7 +44,7 @@ public class DrawGunMinigame : MonoBehaviour
         //other = GameObject.Find("Passer");
         // Effects scr = GetComponent<Effects>();
         // scr.selectEffect("mouse");
-        other.selectEffect("mouse");
+        //other.selectEffect("mouse");
         //other.GetComponent
 
         //Effects.selectEffect("mouse");
