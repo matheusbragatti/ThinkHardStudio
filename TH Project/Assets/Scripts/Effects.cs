@@ -7,7 +7,7 @@ public class Effects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //selectEffect("mouse");
     }
 
     // Update is called once per frame
@@ -36,6 +36,14 @@ public class Effects : MonoBehaviour
                 flipScreen();
                 break;
 
+                case 3:
+                playSoundWindows();
+                break;
+
+                case 4:
+                playSoundNotification();
+                break;
+
             }
         }
 
@@ -45,11 +53,19 @@ public class Effects : MonoBehaviour
             switch(generator)
             {
                 case 1:
-
+                swapKeys();
                 break;
 
                 case 2:
+                flipScreen();
+                break;
 
+                case 3:
+                playSoundWindows();
+                break;
+
+                case 4:
+                playSoundNotification();
                 break;
 
             }
@@ -75,6 +91,22 @@ void flipScreen()
     Camera.main.projectionMatrix = mat;
 }
 
+
+void playSoundWindows()
+{
+
+}
+
+void playSoundNotification()
+{
+
+}
+
+void swapKeys()
+{
+
+    
+}
 
 
 }
