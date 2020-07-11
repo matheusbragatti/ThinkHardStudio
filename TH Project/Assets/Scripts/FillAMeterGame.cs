@@ -13,11 +13,13 @@ public class FillAMeterGame : MonoBehaviour
     public float meterMaxAmount;
     public Slider meterGauge;
     public TextMeshProUGUI meterAmountValue;
+    public TextMeshProUGUI timerAmount;
     public float timeLimit;
 
     private float meterCurrentAmount;
     private float timer;
-    private string currentControl;
+    private float timeLeft;
+    //private string currentControl;
     private int currentControlIndex;
 
     // Start is called before the first frame update
@@ -25,8 +27,9 @@ public class FillAMeterGame : MonoBehaviour
     {
         mainController = GameObject.FindGameObjectWithTag("GameController");
         controller = mainController.GetComponent<Controller>();
+        meterCurrentAmount = 0;
         meterGauge.maxValue = meterMaxAmount;
-        currentControl = "";
+        //currentControl = "";
         timer = 0f;
     }
 
@@ -38,7 +41,9 @@ public class FillAMeterGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        if(CountdownController.gameBegan)
+            timer += Time.deltaTime;
+
         meterGauge.value = meterCurrentAmount;
 
         if(timer <= timeLimit)
@@ -47,15 +52,22 @@ public class FillAMeterGame : MonoBehaviour
             {
                 meterCurrentAmount += 10;
             }
+            if(meterCurrentAmount >= meterMaxAmount)
+            {
+                //controller.changeGame;
+            }
         }
-        else
+        else if (timer > timeLimit)
         {
             //controller.endGame();
         }
 
+        meterAmountValue.text = meterCurrentAmount.ToString("F0") + "%";
+        timeLeft = timeLimit - timer;
+        timerAmount.text = timeLeft.ToString("F2") + "s";
     }
 
-    void ChangeControl()
+    /*void ChangeControl() //attempt to implement control change
     {
         currentControlIndex = Random.Range(1, 3);
         switch (currentControlIndex)
@@ -73,5 +85,5 @@ public class FillAMeterGame : MonoBehaviour
                 currentControl = "Space";
                 break;
         }
-    }
+    }*/
 }
