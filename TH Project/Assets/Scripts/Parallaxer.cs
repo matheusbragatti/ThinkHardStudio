@@ -49,7 +49,16 @@ public class Parallaxer : MonoBehaviour
     }
     private void Update()
     {
+        if (bird.gameOver) return;
 
+        Shift();
+
+        spawnTimer += Time.deltaTime;
+        if(spawnTimer > spawnRate)
+        {
+            Spawn();
+            spawnTimer = 0;
+        }
     }
     void Configure()
     {
@@ -77,7 +86,13 @@ public class Parallaxer : MonoBehaviour
     }
     void SpawnImmediate()
     {
-
+        Transform t = GetPoolObject();
+        if (t == null) return; //if true, this indicates that poolSize is too small
+        Vector3 pos = Vector3.zero;
+        pos.x = immediateSpawnPos.x;
+        pos.y = Random.Range(ySpawnRange.min, ySpawnRange.max);
+        t.position = pos;
+        Spawn();
     }
 
     void Shift()
