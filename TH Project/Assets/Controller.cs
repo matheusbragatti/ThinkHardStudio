@@ -4,31 +4,58 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    public int liveCounter;
+    public int lifeCounter;
     public int miniGamesLeft;
+    public int randomMiniGame;
+    public string miniGame;
 
 
     private void Awake()
     {
-       
+       //Make this object a singleton.
     }
 
 
-    // Start is called before the first frame update
     void Start()
     {
-        liveCounter = 3;
+        lifeCounter = 3;
         miniGamesLeft = 10;
-
-
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
+    public void changeLives(int value)
+    {
+        this.lifeCounter += value;
 
+        if(this.lifeCounter <= 0)
+        {
+            //Trigger game over method.
+        }
+
+    }
+
+
+
+
+    public string pickRandomGame()
+    {
+        randomMiniGame = Random.Range(1, 5);
+
+        switch (randomMiniGame)
+        {
+            case 0:
+                miniGame = "Pong";
+                break;
+
+            case 1:
+
+                break;
+
+        }
+        return miniGame;
+    }
 }
