@@ -30,12 +30,23 @@ public class DrawGunMinigame : MonoBehaviour
     public GameObject textFire;
 
     public GameObject textBox;
+
+    public GameObject m_otherScript;
+
+    public Effects other;
+    
     
     void Start()
     {
-         mainController = GameObject.FindGameObjectWithTag("GameController");
-         controller = mainController.GetComponent<Controller>();
+        mainController = GameObject.FindGameObjectWithTag("GameController");
+        controller = mainController.GetComponent<Controller>();
          
+        //other = GameObject.Find("Passer");
+        
+        other.selectEffect("mouse");
+        //other.GetComponent
+
+
         //text.gameObject.SetActive(false);
         //CanvasGroup.alpha = 0f;
         textFire = GameObject.Find("Fire-Text");
@@ -112,8 +123,8 @@ public class DrawGunMinigame : MonoBehaviour
     {
         System.Timers.Timer aTimer = new System.Timers.Timer();
         aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-        timeLimit = Random.Range(2f, 4f);
-        aTimer.Interval = 3000;
+        timeLimit = Random.Range(2000, 4000);
+        aTimer.Interval = timeLimit;
         aTimer.Enabled = true;
         aTimer.Start();
 
