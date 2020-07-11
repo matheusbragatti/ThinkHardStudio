@@ -10,7 +10,7 @@ public class Controller : MonoBehaviour
 
     private void Awake()
     {
-       
+
     }
 
 
@@ -27,7 +27,7 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
