@@ -113,7 +113,7 @@ public class Controller : MonoBehaviour
     public void restartGame()
     {
         lifeCounter = 3;
-        miniGamesLeft = 6;
+        miniGamesLeft = 5;
         playedMiniGames.Clear();
         SceneManager.LoadScene("MainScene");
     }
