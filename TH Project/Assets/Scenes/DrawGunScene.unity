@@ -260,8 +260,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: YOU LOSE!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 790be3fd7f4e1e344bfbfb824550645c, type: 2}
-  m_sharedMaterial: {fileID: -4952744485643718968, guid: 790be3fd7f4e1e344bfbfb824550645c,
+  m_fontAsset: {fileID: 11400000, guid: b8eb367ddf9356c45ac1572a1eacae84, type: 2}
+  m_sharedMaterial: {fileID: 5675100928353451105, guid: b8eb367ddf9356c45ac1572a1eacae84,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 4
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -485,8 +485,8 @@ MonoBehaviour:
 
     Press mouse button'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 790be3fd7f4e1e344bfbfb824550645c, type: 2}
-  m_sharedMaterial: {fileID: -4952744485643718968, guid: 790be3fd7f4e1e344bfbfb824550645c,
+  m_fontAsset: {fileID: 11400000, guid: b8eb367ddf9356c45ac1572a1eacae84, type: 2}
+  m_sharedMaterial: {fileID: 5675100928353451105, guid: b8eb367ddf9356c45ac1572a1eacae84,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_firstOverflowCharacterIndex: 13
@@ -1038,6 +1038,7 @@ MonoBehaviour:
   textFire: {fileID: 0}
   textWin: {fileID: 0}
   textLose: {fileID: 0}
+  shot: {fileID: 0}
   textBox: {fileID: 0}
   going: {fileID: 0}
   m_otherScript: {fileID: 0}
@@ -1328,8 +1329,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: YOU WIN!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 790be3fd7f4e1e344bfbfb824550645c, type: 2}
-  m_sharedMaterial: {fileID: -4952744485643718968, guid: 790be3fd7f4e1e344bfbfb824550645c,
+  m_fontAsset: {fileID: 11400000, guid: b8eb367ddf9356c45ac1572a1eacae84, type: 2}
+  m_sharedMaterial: {fileID: 5675100928353451105, guid: b8eb367ddf9356c45ac1572a1eacae84,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1372,7 +1373,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1401,7 +1402,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1774,8 +1775,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: FIRE!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 790be3fd7f4e1e344bfbfb824550645c, type: 2}
-  m_sharedMaterial: {fileID: -4952744485643718968, guid: 790be3fd7f4e1e344bfbfb824550645c,
+  m_fontAsset: {fileID: 11400000, guid: b8eb367ddf9356c45ac1572a1eacae84, type: 2}
+  m_sharedMaterial: {fileID: 5675100928353451105, guid: b8eb367ddf9356c45ac1572a1eacae84,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1818,7 +1819,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
