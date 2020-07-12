@@ -27,14 +27,11 @@ public class Controller : MonoBehaviour
     public string miniGame;
     public int maxGames;
     public List<int> playedMiniGames;
-
+    public bool logoPlayed = false;
 
     void Start()
     {
-
-        lifeCounter = 3;
-        miniGamesLeft = 10;
-        maxGames = 5;
+        maxGames = 4;
     }
 
     void Update()
@@ -44,7 +41,7 @@ public class Controller : MonoBehaviour
 
     public void miniGameWon()
     {
-    
+
         this.miniGamesLeft--;
         if(miniGamesLeft <= 0)
         {
@@ -80,7 +77,7 @@ public class Controller : MonoBehaviour
         {
             if(playedMiniGames.Count >= maxGames)
             {
-                return "MainScene";
+                playedMiniGames.Clear();
             }
             randomMiniGame = Random.Range(0, maxGames);
         }
@@ -88,23 +85,19 @@ public class Controller : MonoBehaviour
         switch (randomMiniGame)
         {
             case 0:
-                miniGame = "Pong";
+                miniGame = "GiantAndWindmill";
                 break;
 
             case 1:
-                miniGame = "Fly to nest";
+                miniGame = "FlyToNest";
                 break;
 
             case 3:
-                miniGame = "";
+                miniGame = "StayWithTheCircle";
                 break;
 
             case 4:
-                miniGame = "";
-                break;
-
-            case 5:
-                miniGame = "";
+                miniGame = "DrawGunScene";
                 break;
 
         }
