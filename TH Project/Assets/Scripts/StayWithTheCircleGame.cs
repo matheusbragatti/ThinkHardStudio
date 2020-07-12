@@ -9,7 +9,7 @@ public class StayWithTheCircleGame : MonoBehaviour
     private float timeLeft;
     private float timerOutside;
 
-    public static bool gameLoss = false;
+    public static bool gameLoss;
 
     public float timeLimit;
     public TextMeshProUGUI timerAmount;
@@ -25,6 +25,7 @@ public class StayWithTheCircleGame : MonoBehaviour
     {
         mainController = GameObject.FindGameObjectWithTag("GameController");
         controller = mainController.GetComponent<Controller>();
+        gameLoss = false;
     }
 
     // Update is called once per frame
@@ -55,8 +56,6 @@ public class StayWithTheCircleGame : MonoBehaviour
         {
             StartCoroutine("MiniGameWin");
         }
-
-
         timeLeft = timeLimit - timer;
         timerAmount.text = timeLeft.ToString("F2") + "s";
     }

@@ -39,11 +39,6 @@ public class DrawGunMinigame : MonoBehaviour
     public GameObject Player;
 
 
-    private void Start()
-    {
-
-    }
-
     public GameObject Test;
     public Controller TestingC;
 
