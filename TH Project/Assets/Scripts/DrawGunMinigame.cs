@@ -38,14 +38,17 @@ public class DrawGunMinigame : MonoBehaviour
     public bool PlayerLost = false;
     public GameObject Player;
 
-<<<<<<< HEAD
+
     private void Start()
-=======
+    {
+
+    }
+
     public GameObject Test;
     public Controller TestingC;
 
     void Start()
->>>>>>> 9e54af454c59849d182fa6f6dd5082631bd11f25
+
     {
         mainController = GameObject.FindGameObjectWithTag("GameController");
         controller = mainController.GetComponent<Controller>();
@@ -84,17 +87,17 @@ public class DrawGunMinigame : MonoBehaviour
             Debug.Log("TOO LONG");
             allowClick = false;
             renderingEnemy.sprite = enemyFire[1];
-<<<<<<< HEAD
+
             textLose.SetActive(true);
             textFire.SetActive(false);
-=======
+
                     textLose.SetActive(true);
                     //textFire = GameObject.Find("Fire-Text");
                     textFire.SetActive(false);
             controller.miniGameLost();
            // startCountDownEnemy();
 
->>>>>>> 9e54af454c59849d182fa6f6dd5082631bd11f25
+
         }
 
         if (allowClick)
@@ -111,27 +114,7 @@ public class DrawGunMinigame : MonoBehaviour
                     textFire.SetActive(false);
 
                     renderingPlayer.sprite = playerFire[1];
-<<<<<<< HEAD
-=======
-                    // AudioSource audioCheck;
-                    // audioCheck = GetComponent<AudioSource>();
-                    // audioCheck.mute = true;
 
-                    // Test = GameObject.Find("TestController");
-                    //   TestingC = Test.GetComponent<Controller>();
-                    //   TestingC.miniGameWon();
-
-
-                    //controller.miniGameWon();
-
-
-                   // going = textFire2.GetComponent<Text>();
-                    //going.text = "YOU WIN!";
-
-
-                    //controller.miniGameWon();
-
->>>>>>> 9e54af454c59849d182fa6f6dd5082631bd11f25
                 }
                 else
                 {
@@ -140,11 +123,10 @@ public class DrawGunMinigame : MonoBehaviour
                     textLose.SetActive(true);
                     textFire = GameObject.Find("Fire-Text");
                     textFire.SetActive(false);
-<<<<<<< HEAD
-=======
+
                     controller.miniGameLost();
 
->>>>>>> 9e54af454c59849d182fa6f6dd5082631bd11f25
+
                 }
 
                 allowClick = false;
