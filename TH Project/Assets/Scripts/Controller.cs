@@ -23,25 +23,11 @@ public class Controller : MonoBehaviour
 
         lifeCounter = 3;
         miniGamesLeft = 10;
+        maxGames = 1;
     }
 
     void Update()
     {
-
-    }
-
-    public void startGame()
-    {
-        string firstMiniGame;
-        //Play Intro
-        //
-        //---
-
-
-        firstMiniGame = pickRandomGame();
-
-        SceneManager.LoadScene(firstMiniGame);
-
 
     }
 
@@ -88,14 +74,14 @@ public class Controller : MonoBehaviour
 
     public string pickRandomGame()
     {
-        randomMiniGame = Random.Range(1, maxGames);
+        randomMiniGame = Random.Range(0, maxGames);
         while (playedMiniGames.Contains(randomMiniGame))
         {
             if(playedMiniGames.Count >= maxGames)
             {
                 return "MainScene";
             }
-            randomMiniGame = Random.Range(1, maxGames);
+            randomMiniGame = Random.Range(0, maxGames);
         }
 
         switch (randomMiniGame)
@@ -105,12 +91,20 @@ public class Controller : MonoBehaviour
                 break;
 
             case 1:
-
+                miniGame = "Fly to nest";
                 break;
 
         }
         playedMiniGames.Add(randomMiniGame);
         return miniGame;
+    }
+
+    public void restartGame()
+    {
+        lifeCounter = 3;
+        miniGamesLeft = 10;
+        playedMiniGames.Clear();
+        SceneManager.LoadScene("MainScene");
     }
 
 }
