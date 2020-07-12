@@ -44,6 +44,9 @@ public class DrawGunMinigame : MonoBehaviour
     public bool PlayerLost = false;
     public GameObject Player;
 
+    public GameObject Test;
+    public Controller TestingC;
+
     void Start()
     {
         mainController = GameObject.FindGameObjectWithTag("GameController");
@@ -118,7 +121,7 @@ public class DrawGunMinigame : MonoBehaviour
                     textLose.SetActive(true);
                     //textFire = GameObject.Find("Fire-Text");
                     textFire.SetActive(false);
-
+            controller.miniGameLost();
            // startCountDownEnemy();
 
         }
@@ -140,6 +143,16 @@ public class DrawGunMinigame : MonoBehaviour
                     //rendering.sprite = enemyFire[1];
 
                     renderingPlayer.sprite = playerFire[1];
+                    // AudioSource audioCheck;
+                    // audioCheck = GetComponent<AudioSource>();
+                    // audioCheck.mute = true;
+
+                    // Test = GameObject.Find("TestController");
+                    //   TestingC = Test.GetComponent<Controller>();
+                    //   TestingC.miniGameWon();
+
+
+                    //controller.miniGameWon();
 
 
                    // going = textFire2.GetComponent<Text>();
@@ -157,6 +170,7 @@ public class DrawGunMinigame : MonoBehaviour
                     textLose.SetActive(true);
                     textFire = GameObject.Find("Fire-Text");
                     textFire.SetActive(false);
+                    controller.miniGameLost();
 
                 }
 
