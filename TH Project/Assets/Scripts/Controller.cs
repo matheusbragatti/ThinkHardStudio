@@ -5,6 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
 {
+
+    public static Controller Instance { get; private set; }
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public int lifeCounter;
     public int miniGamesLeft;
     public int randomMiniGame;
@@ -12,18 +28,13 @@ public class Controller : MonoBehaviour
     public int maxGames;
     public List<int> playedMiniGames;
 
-    private void Awake()
-    {
-        //Make this object a singleton
-    }
-
 
     void Start()
     {
 
         lifeCounter = 3;
         miniGamesLeft = 10;
-        maxGames = 1;
+        maxGames = 5;
     }
 
     void Update()
@@ -33,41 +44,31 @@ public class Controller : MonoBehaviour
 
     public void miniGameWon()
     {
-        string miniGamePicked;
-
+    
         this.miniGamesLeft--;
         if(miniGamesLeft <= 0)
         {
-            //Trigger you won
+            SceneManager.LoadScene("WinScene");
         }
         else
         {
-
-            //Trigger minigame transition
-
-            miniGamePicked = pickRandomGame();
-            SceneManager.LoadScene(miniGamePicked);
-
+            SceneManager.LoadScene("TransitionScene");
         }
 
     }
 
     public void miniGameLost()
     {
-        string miniGamePicked;
 
         this.lifeCounter--;
 
         if(this.lifeCounter <= 0)
         {
-            //Trigger game over method.
+            SceneManager.LoadScene("LoseScene");
         }
         else
         {
-            //Trigger minigame transition
-
-            miniGamePicked = pickRandomGame();
-            SceneManager.LoadScene(miniGamePicked);
+            SceneManager.LoadScene("TransitionScene");
         }
 
     }
@@ -92,6 +93,18 @@ public class Controller : MonoBehaviour
 
             case 1:
                 miniGame = "Fly to nest";
+                break;
+
+            case 3:
+                miniGame = "";
+                break;
+
+            case 4:
+                miniGame = "";
+                break;
+
+            case 5:
+                miniGame = "";
                 break;
 
         }

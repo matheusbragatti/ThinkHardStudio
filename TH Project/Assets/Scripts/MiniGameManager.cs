@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MiniGameManager : MonoBehaviour
 {
+
     public GameObject mainController;
     public Controller controller;
     public int miniGamesLives;
