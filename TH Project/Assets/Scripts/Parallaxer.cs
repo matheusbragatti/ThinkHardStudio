@@ -33,7 +33,7 @@ public class Parallaxer : MonoBehaviour
     public Vector3 immediateSpawnPos;
     public Vector2 targetAspectRatio;
 
-    float spawnTimer;
+    [SerializeField] float spawnTimer;
     float targetAspect;
     PoolObject[] poolObjects;
     BirdController bird;
@@ -45,19 +45,24 @@ public class Parallaxer : MonoBehaviour
 
     private void Start()
     {
-        bird = GetComponent<BirdController>();
+        bird = FindObjectOfType<BirdController>();
     }
     private void Update()
     {
         if (bird.gameOver) return;
 
-        Shift();
-
-        spawnTimer += Time.deltaTime;
-        if(spawnTimer > spawnRate)
+        if(CountdownController.gameBegan)
         {
-            Spawn();
-            spawnTimer = 0;
+            Shift();
+
+            spawnTimer += Time.deltaTime;
+            if(spawnTimer > spawnRate)
+            {
+                Spawn();
+                spawnTimer = 0;
+            }
+            spawnRate -= Time.deltaTime * 0.1f;
+            shiftSpeed += Time.deltaTime * 0.2f;
         }
     }
     void Configure()
@@ -80,7 +85,7 @@ public class Parallaxer : MonoBehaviour
         Transform t = GetPoolObject();
         if (t == null) return; //if true, this indicates that poolSize is too small
         Vector3 pos = Vector3.zero;
-        pos.x = defaultSpawnPos.x;
+        pos.x = (defaultSpawnPos.x * Camera.main.aspect) / targetAspect;
         pos.y = Random.Range(ySpawnRange.min, ySpawnRange.max);
         t.position = pos;
     }
@@ -89,7 +94,7 @@ public class Parallaxer : MonoBehaviour
         Transform t = GetPoolObject();
         if (t == null) return; //if true, this indicates that poolSize is too small
         Vector3 pos = Vector3.zero;
-        pos.x = immediateSpawnPos.x;
+        pos.x = (immediateSpawnPos.x * Camera.main.aspect) / targetAspect;
         pos.y = Random.Range(ySpawnRange.min, ySpawnRange.max);
         t.position = pos;
         Spawn();
@@ -99,14 +104,14 @@ public class Parallaxer : MonoBehaviour
     {
         for (int i = 0; i< poolObjects.Length; i++)
         {
-            poolObjects[i].transform.position += -Vector3.right * shiftSpeed * Time.deltaTime;
+            poolObjects[i].transform.localPosition += -Vector3.right * shiftSpeed * Time.deltaTime;
             CheckDisposeObject(poolObjects[i]);
         }
     }
 
     void CheckDisposeObject(PoolObject poolObject)
     {
-        if(poolObject.transform.position.x < -defaultSpawnPos.x)
+        if(poolObject.transform.position.x < (-defaultSpawnPos.x * Camera.main.aspect)/targetAspect)
         {
             poolObject.Dispose();
             poolObject.transform.position = Vector3.one * 1000;

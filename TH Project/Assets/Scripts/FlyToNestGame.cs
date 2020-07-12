@@ -13,13 +13,14 @@ public class FlyToNestGame : MonoBehaviour
     public float timeLimit;
 
     private float timer;
-
+    private float timeLeft;
 
     // Start is called before the first frame update
     void Start()
     {
         mainController = GameObject.FindGameObjectWithTag("GameController");
         controller = mainController.GetComponent<Controller>();
+        bird = FindObjectOfType<BirdController>();
         timer = 0;
     }
 
@@ -31,13 +32,16 @@ public class FlyToNestGame : MonoBehaviour
 
         if (timer > timeLimit)
         {
-            //controller.gameLoss();
+            //controller.gameWon();
         }
 
         if(bird.gameOver)
         {
-            //controller.gameLoss();
+            //controller.gameLost();
         }
+
+        timeLeft = timeLimit - timer;
+        timerAmount.text = timeLeft.ToString("F2") + "s";
     }
 
 

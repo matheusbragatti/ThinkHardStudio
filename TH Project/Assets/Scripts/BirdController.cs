@@ -20,6 +20,8 @@ public class BirdController : MonoBehaviour
         downRotation = Quaternion.Euler(0, 0, -60);
         forwardRotation = Quaternion.Euler(0, 0, 40);
         rigidbody.simulated = false;
+        gameOver = false;
+        gameWin = false;
     }
 
     void Update()
@@ -43,11 +45,6 @@ public class BirdController : MonoBehaviour
         {
             rigidbody.simulated = false;
             gameOver = true;
-        }
-
-        if(col.gameObject.tag == "EndGoal")
-        {
-            gameWin = true;
         }
     }
 }

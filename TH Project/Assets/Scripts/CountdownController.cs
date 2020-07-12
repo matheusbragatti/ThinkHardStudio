@@ -12,6 +12,7 @@ public class CountdownController : MonoBehaviour
 
     void Start()
     {
+        gameBegan = false;
         StartCoroutine(CountdownToStart());
     }
 
