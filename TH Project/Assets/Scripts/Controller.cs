@@ -31,13 +31,16 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-        maxGames = 4;
+        maxGames = 3;
         logoPlayed = false;
     }
 
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void miniGameWon()
@@ -97,9 +100,9 @@ public class Controller : MonoBehaviour
                 miniGame = "StayWithTheCircle";
                 break;
 
-            case 3:
-                miniGame = "DrawGunScene";
-                break;
+           // case 3:
+            //    miniGame = "DrawGunScene";
+            //    break;
 
         }
         playedMiniGames.Add(randomMiniGame);
@@ -109,7 +112,7 @@ public class Controller : MonoBehaviour
     public void restartGame()
     {
         lifeCounter = 3;
-        miniGamesLeft = 10;
+        miniGamesLeft = 6;
         playedMiniGames.Clear();
         SceneManager.LoadScene("MainScene");
     }

@@ -42,7 +42,7 @@ public class CanvasController : MonoBehaviour
         playButton.SetActive(false);
 
         controller.lifeCounter = 3;
-        controller.miniGamesLeft = 10;
+        controller.miniGamesLeft = 6;
         controller.playedMiniGames.Clear();
 
         StartCoroutine(prepareVideo());
