@@ -24,6 +24,11 @@ public class CanvasController : MonoBehaviour
         if (!controller.logoPlayed)
         {
             StartCoroutine(playLogo());
+            controller.logoPlayed = true;
+        }
+        else
+        {
+            panel.SetActive(true);
         }
         
     }

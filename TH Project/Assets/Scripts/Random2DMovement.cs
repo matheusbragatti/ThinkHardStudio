@@ -2,6 +2,8 @@
 
 public class Random2DMovement : MonoBehaviour
 {
+    public AudioSource virusTone;
+
     public Waypoint[] wayPoints;
     public float speed = 3f;
     public bool isCircular;
@@ -64,6 +66,9 @@ public class Random2DMovement : MonoBehaviour
         }
         else
         {
+
+            virusTone.Play();
+
             // If the waypoint has a pause amount then wait a bit
             if (currentWaypoint.waitSeconds > 0)
             {
