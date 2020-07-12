@@ -14,6 +14,8 @@ public class CanvasController : MonoBehaviour
     public VideoPlayer logoVideoPlayer;
     public GameObject panel;
     public GameObject playButton;
+    public AudioSource introMusic;
+    public AudioSource backgroundMusic;
 
 
     private void Start()
@@ -25,10 +27,12 @@ public class CanvasController : MonoBehaviour
         {
             StartCoroutine(playLogo());
             controller.logoPlayed = true;
+            
         }
         else
         {
             panel.SetActive(true);
+            backgroundMusic.Play();
         }
         
     }
@@ -53,12 +57,15 @@ public class CanvasController : MonoBehaviour
         {
             yield return waitForSeconds;
         }
+        backgroundMusic.Stop();
         panel.SetActive(false);
         introVideoPlayer.Play();
+        introMusic.Play();
         while (introVideoPlayer.isPlaying)
         {
             yield return waitForSeconds;
         }
+        introMusic.Stop();
         gamePicked = controller.pickRandomGame();
         SceneManager.LoadScene(gamePicked);
     }
@@ -78,6 +85,7 @@ public class CanvasController : MonoBehaviour
             yield return waitForSeconds;
         }
         panel.SetActive(true);
+        backgroundMusic.Play();
     }
 
 
