@@ -41,6 +41,9 @@ public class DrawGunMinigame : MonoBehaviour
 
     public bool gunShot = false;
 
+    public bool PlayerLost = false;
+    public GameObject Player;
+
     void Start()
     {
         mainController = GameObject.FindGameObjectWithTag("GameController");
@@ -64,6 +67,11 @@ public class DrawGunMinigame : MonoBehaviour
         textWin.SetActive(false);
         textLose = GameObject.Find("Lose");
         textLose.SetActive(false);
+
+        //Player = GameObject.Find("AudioPlayer");
+        //Player.GetComponent<Audio>().Play();
+
+        
 
 
     //   //  GetComponent(textFire).enabled = false;
@@ -99,14 +107,19 @@ public class DrawGunMinigame : MonoBehaviour
             textShow = false;
         }
 
+        if(PlayerLost == true)
+        {}
+
         if(gunShot == true)
         {
             Debug.Log("TOO LONG");
-            // allowClick = false;
-            // renderingEnemy.sprite = enemyFire[1];
-            //         textLose.SetActive(true);
-            //         textFire = GameObject.Find("Fire-Text");
-            //         textFire.SetActive(false);
+            allowClick = false;
+            renderingEnemy.sprite = enemyFire[1];
+                    textLose.SetActive(true);
+                    //textFire = GameObject.Find("Fire-Text");
+                    textFire.SetActive(false);
+
+           // startCountDownEnemy();
 
         }
 
@@ -188,8 +201,24 @@ public class DrawGunMinigame : MonoBehaviour
 
     }
 
-    public bool timeUP = true;
+    void startCountDownEnemy()
+    {
+        System.Timers.Timer aTimer = new System.Timers.Timer();
+        aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent2);
+        timeLimit = Random.Range(2000, 4000);
+        aTimer.Interval = 3000;
+        aTimer.Enabled = true;
+        aTimer.Start();
 
+        /*
+        Here the game should show the enemy drew their gun
+        and the user should click it.
+        */
+
+    }
+
+    public bool timeUP = true;
+    public int track = 0;
 
     private void OnTimedEvent(object source, ElapsedEventArgs e)
     {
@@ -205,21 +234,47 @@ public class DrawGunMinigame : MonoBehaviour
                 textShow = true;
                 //gunShot = true;
                 //startCountDown();
+                
 
             }
             if(timeUP == false)
             {
-                Debug.Log("NOPE");
+                Debug.Log("TRACKING: " + track);
+                track += 1;
+                if(track == 2)
+                {
+                    gunShot = true;
+                    Debug.Log("NOPE");
+                }
                 //Add failure state here
                 //gunShot = true;
             // drawn = false;
             }
         }
-
-
-
-        //Console.WriteLine("Hello World!");
     }
+
+  private void OnTimedEvent2(object source, ElapsedEventArgs e)
+{
+    Debug.Log("ENEMY WON");
+    textLose.SetActive(true);
+                    //Debug.Log("WON!");
+
+                    textFire = GameObject.Find("Fire-Text");
+                    textFire.SetActive(false);
+                    //rendering.sprite = enemyFire[1];
+
+                    renderingEnemy.sprite = enemyFire[1];
+                    allowClick = false;
+
+
+
+
+}
+
+
+
+       
+    
 
 
 
