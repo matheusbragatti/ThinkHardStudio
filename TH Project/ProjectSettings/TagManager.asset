@@ -45,6 +45,15 @@ TagManager:
   - name: Background
     uniqueID: 3074139707
     locked: 0
+  - name: City
+    uniqueID: 557974201
+    locked: 0
+  - name: Moon
+    uniqueID: 2531399745
+    locked: 0
+  - name: Clouds
+    uniqueID: 1228790099
+    locked: 0
   - name: Bird
     uniqueID: 3839372557
     locked: 0
