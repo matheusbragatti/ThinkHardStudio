@@ -36,7 +36,7 @@ public class FillAMeterGame : MonoBehaviour
 
     private void Start()
     {
-        //ChangeControl();
+        
     }
 
     // Update is called once per frame
@@ -51,7 +51,7 @@ public class FillAMeterGame : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                meterCurrentAmount += 10;
+                meterCurrentAmount += 10;                
             }
             if(meterCurrentAmount >= meterMaxAmount)
             {
