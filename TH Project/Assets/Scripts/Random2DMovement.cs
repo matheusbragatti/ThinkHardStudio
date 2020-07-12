@@ -29,6 +29,7 @@ public class Random2DMovement : MonoBehaviour
     private void Update()
     {
         if (!CountdownController.gameBegan) return;
+        if (StayWithTheCircleGame.gameLoss) return;
 
         if (currentWaypoint != null && !isWaiting)
         {
