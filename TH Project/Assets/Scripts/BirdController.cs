@@ -29,6 +29,8 @@ public class BirdController : MonoBehaviour
         if (!CountdownController.gameBegan) return;
         else rigidbody.simulated = true;
 
+        if (FlyToNestGame.gameOver) return;
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             transform.rotation = forwardRotation;
