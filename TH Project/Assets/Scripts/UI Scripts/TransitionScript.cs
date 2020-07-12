@@ -11,6 +11,7 @@ public class TransitionScript : MonoBehaviour
     private Controller controller;
     public TextMeshProUGUI lifesText;
     public TextMeshProUGUI miniGamesLeftText;
+    public AudioSource backgroundMusic;
 
 
     private void Start()
@@ -19,6 +20,7 @@ public class TransitionScript : MonoBehaviour
         controller = mainController.GetComponent<Controller>();
         lifesText.text = controller.lifeCounter + " Lifes left";
         miniGamesLeftText.text = controller.miniGamesLeft + " Games left";
+        backgroundMusic.Play();
     }
 
 
@@ -28,5 +30,6 @@ public class TransitionScript : MonoBehaviour
 
         miniGamePicked = controller.pickRandomGame();
         SceneManager.LoadScene(miniGamePicked);
+        backgroundMusic.Stop();
     }
 }
