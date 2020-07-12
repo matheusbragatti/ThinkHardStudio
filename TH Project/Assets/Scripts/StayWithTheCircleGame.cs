@@ -9,6 +9,8 @@ public class StayWithTheCircleGame : MonoBehaviour
     private float timeLeft;
     private float timerOutside;
 
+    public static bool gameLoss = false;
+
     public float timeLimit;
     public TextMeshProUGUI timerAmount;
 
@@ -29,6 +31,7 @@ public class StayWithTheCircleGame : MonoBehaviour
     void Update()
     {
         if (!CountdownController.gameBegan) return;
+        if (gameLoss) return;
 
         timer += Time.deltaTime;
         Vector3 mousePos = Input.mousePosition;
@@ -41,6 +44,7 @@ public class StayWithTheCircleGame : MonoBehaviour
                 timerOutside += Time.deltaTime;
                 if (timerOutside > 0.5)
                 {
+                    gameLoss = true;
                     StartCoroutine("MiniGameLoss");
                 }
             }

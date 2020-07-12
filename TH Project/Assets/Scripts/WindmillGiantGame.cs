@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,12 @@ public class WindmillGiantGame : MonoBehaviour
 {
     public GameObject mainController;
     public Controller controller;
+
+    public GameObject winText;
+    public GameObject loseText;
+    public AudioSource winTone;
+    public AudioSource meter;
+    public bool canPlay;
 
     public float meterAmount;
     public float meterMaxAmount;
@@ -33,6 +40,7 @@ public class WindmillGiantGame : MonoBehaviour
         meterCurrentAmount = 0;
         meterGauge.maxValue = meterMaxAmount;
         timer = 0f;
+        canPlay = true;
         rend = GetComponent<SpriteRenderer>();
     }
 
@@ -49,7 +57,14 @@ public class WindmillGiantGame : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 meterCurrentAmount += 10;
+                Mathf.Clamp(meterCurrentAmount, 0, 100f);
                 rend.sprite = two;
+                if (canPlay)
+                {
+                    meter.Play();
+                    canPlay = false;
+                }
+
             }
             if (Input.GetKeyUp(KeyCode.Space))
             {
@@ -58,16 +73,31 @@ public class WindmillGiantGame : MonoBehaviour
 
             if (meterCurrentAmount >= meterMaxAmount)
             {
-                //controller.miniGameWon();
+                StartCoroutine("MiniGameWin");
             }
         }
         else if (timer > timeLimit)
         {
-            //controller.miniGameLost();
+            StartCoroutine("MiniGameLoss");
         }
 
         meterAmountValue.text = meterCurrentAmount.ToString("F0") + "%";
         timeLeft = timeLimit - timer;
         timerAmount.text = timeLeft.ToString("F2") + "s";
+    }
+
+    IEnumerator MiniGameWin()
+    {
+        winText.SetActive(true);
+        winTone.Play();
+        yield return new WaitForSeconds(1f);
+        controller.miniGameWon();
+    }
+
+    IEnumerator MiniGameLoss()
+    {
+        loseText.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        controller.miniGameLost();
     }
 }
