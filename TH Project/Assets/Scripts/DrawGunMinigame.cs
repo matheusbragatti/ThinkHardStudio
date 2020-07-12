@@ -1,14 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Timers;
+﻿using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-
 
 public class DrawGunMinigame : MonoBehaviour
 {
-
     public GameObject mainController;
     public Controller controller;
 
@@ -20,13 +15,12 @@ public class DrawGunMinigame : MonoBehaviour
 
     private float timer;
 
-    bool state;
+    private bool state;
 
-    bool drawn = false;
+    private bool drawn = false;
 
-    bool textShow = false;
+    private bool textShow = false;
 
-    // Start is called before the first frame update
     public GameObject textFire;
     public GameObject textWin;
     public GameObject textLose;
@@ -44,22 +38,11 @@ public class DrawGunMinigame : MonoBehaviour
     public bool PlayerLost = false;
     public GameObject Player;
 
-    void Start()
+    private void Start()
     {
         mainController = GameObject.FindGameObjectWithTag("GameController");
         controller = mainController.GetComponent<Controller>();
 
-    //     //other = GameObject.Find("Passer");
-    //     // Effects scr = GetComponent<Effects>();
-    //     // scr.selectEffect("mouse");
-    //      other.selectEffect("mouse");
-    //     //other.GetComponent
-
-    //     //Effects.selectEffect("mouse");
-
-
-    //     //text.gameObject.SetActive(false);
-    //     //CanvasGroup.alpha = 0f;
         textFire = GameObject.Find("Fire-Text");
         textFire.SetActive(false);
         Debug.Log("TETSING: " + textFire);
@@ -68,124 +51,66 @@ public class DrawGunMinigame : MonoBehaviour
         textLose = GameObject.Find("Lose");
         textLose.SetActive(false);
 
-        //Player = GameObject.Find("AudioPlayer");
-        //Player.GetComponent<Audio>().Play();
-
-        
-
-
-    //   //  GetComponent(textFire).enabled = false;
-    //     //textFire.GetComponent<Text>().enabled = false;
-
-
-
-
-    //     //textFire.enabled = false;
-    //     // timer = 0;
-    //     // timeLimit = Random.Range(2f, 4f);
-         startCountDown();
+        startCountDown();
     }
 
-
     public bool allowClick = true;
-
 
     public SpriteRenderer renderingPlayer;
     public SpriteRenderer renderingEnemy;
     public Sprite[] playerFire;
     public Sprite[] enemyFire;
 
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
-
-        if(textShow == true)
+        if (textShow == true)
         {
             textFire.SetActive(true);
             textShow = false;
         }
 
-        if(PlayerLost == true)
-        {}
+        if (PlayerLost == true)
+        { }
 
-        if(gunShot == true)
+        if (gunShot == true)
         {
             Debug.Log("TOO LONG");
             allowClick = false;
             renderingEnemy.sprite = enemyFire[1];
-                    textLose.SetActive(true);
-                    //textFire = GameObject.Find("Fire-Text");
-                    textFire.SetActive(false);
-
-           // startCountDownEnemy();
-
+            textLose.SetActive(true);
+            textFire.SetActive(false);
         }
 
-
-        if(allowClick)
+        if (allowClick)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("Pressed primary button.");
-                if(drawn == true)
+                if (drawn == true)
                 {
-                   // textWin = GameObject.Find("Win-Text");
                     textWin.SetActive(true);
                     Debug.Log("WON!");
 
                     textFire = GameObject.Find("Fire-Text");
                     textFire.SetActive(false);
-                    //rendering.sprite = enemyFire[1];
 
                     renderingPlayer.sprite = playerFire[1];
-
-
-                   // going = textFire2.GetComponent<Text>();
-                    //going.text = "YOU WIN!";
-
-
-                    //controller.miniGameWon();
-
                 }
                 else
                 {
                     Debug.Log("LOST....");
-                    //textLose = GameObject.Find("Lose");
                     renderingEnemy.sprite = enemyFire[1];
                     textLose.SetActive(true);
                     textFire = GameObject.Find("Fire-Text");
                     textFire.SetActive(false);
-
                 }
-
 
                 allowClick = false;
             }
-
-
         }
-
-
-
-        // if (CountdownController.gameBegan)
-        //     timer += Time.deltaTime;
-
-        // if (timer > timeLimit)
-        // {
-        //     drawn = true;
-        //     startCountDown();
-        //     //controller.gameLoss();
-        // }
-
-        // if(bird.gameOver)
-        // {
-        //     //controller.gameLoss();
-        // }
     }
 
-    void startCountDown()
+    private void startCountDown()
     {
         System.Timers.Timer aTimer = new System.Timers.Timer();
         aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
@@ -198,10 +123,9 @@ public class DrawGunMinigame : MonoBehaviour
         Here the game should show the enemy drew their gun
         and the user should click it.
         */
-
     }
 
-    void startCountDownEnemy()
+    private void startCountDownEnemy()
     {
         System.Timers.Timer aTimer = new System.Timers.Timer();
         aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent2);
@@ -214,7 +138,6 @@ public class DrawGunMinigame : MonoBehaviour
         Here the game should show the enemy drew their gun
         and the user should click it.
         */
-
     }
 
     public bool timeUP = true;
@@ -222,61 +145,39 @@ public class DrawGunMinigame : MonoBehaviour
 
     private void OnTimedEvent(object source, ElapsedEventArgs e)
     {
-        if(gunShot != true)
+        if (gunShot != true)
         {
-            if(timeUP == true)
+            if (timeUP == true)
             {
                 Debug.Log("TIME UP");
                 drawn = true;
-                // textFire = GameObject.Find("Fire-Text");
-                // textFire.SetActive(true);
                 timeUP = false;
                 textShow = true;
-                //gunShot = true;
-                //startCountDown();
-                
-
             }
-            if(timeUP == false)
+            if (timeUP == false)
             {
                 Debug.Log("TRACKING: " + track);
                 track += 1;
-                if(track == 2)
+                if (track == 2)
                 {
                     gunShot = true;
                     Debug.Log("NOPE");
                 }
                 //Add failure state here
                 //gunShot = true;
-            // drawn = false;
+                // drawn = false;
             }
         }
     }
 
-  private void OnTimedEvent2(object source, ElapsedEventArgs e)
-{
-    Debug.Log("ENEMY WON");
-    textLose.SetActive(true);
-                    //Debug.Log("WON!");
+    private void OnTimedEvent2(object source, ElapsedEventArgs e)
+    {
+        textLose.SetActive(true);
 
-                    textFire = GameObject.Find("Fire-Text");
-                    textFire.SetActive(false);
-                    //rendering.sprite = enemyFire[1];
+        textFire = GameObject.Find("Fire-Text");
+        textFire.SetActive(false);
 
-                    renderingEnemy.sprite = enemyFire[1];
-                    allowClick = false;
-
-
-
-
-}
-
-
-
-       
-    
-
-
-
-
+        renderingEnemy.sprite = enemyFire[1];
+        allowClick = false;
+    }
 }
