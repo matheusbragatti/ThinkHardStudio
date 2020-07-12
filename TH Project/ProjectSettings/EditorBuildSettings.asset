@@ -9,6 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 6d148777754355f4baec778486e6b9aa
   - enabled: 1
-    path: Assets/Scenes/Pong.unity
-    guid: 30ffdb1a7cd785e4a8071e6b8d0c0981
+    path: Assets/Scenes/DrawGunScene.unity
+    guid: 37f958af9735dd947ad64099ee846c38
+  - enabled: 1
+    path: Assets/Scenes/FlyToNest.unity
+    guid: bdfe4d3742e2ead4daa02dfb0f02baa0
+  - enabled: 1
+    path: Assets/Scenes/GiantAndWindmill.unity
+    guid: 8b943c197b0827142b318a5361284e42
+  - enabled: 1
+    path: Assets/Scenes/StayWithTheCircle.unity
+    guid: 3fbd6e6eebeaa4d49819cc3f641abcea
+  - enabled: 1
+    path: Assets/Scenes/Transition Scenes/LoseScene.unity
+    guid: c0cbc1771be95af4db19361f65a56410
+  - enabled: 1
+    path: Assets/Scenes/Transition Scenes/TransitionScene.unity
+    guid: 8373f98e6f4cde344a6c7ac3074a5250
+  - enabled: 1
+    path: Assets/Scenes/Transition Scenes/WinScene.unity
+    guid: 9ab4579b31679e244b70ab3d184cf24d
   m_configObjects: {}

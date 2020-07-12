@@ -156,6 +156,7 @@ MonoBehaviour:
   miniGame: 
   maxGames: 0
   playedMiniGames: 
+  logoPlayed: 1
 --- !u!4 &363048986
 Transform:
   m_ObjectHideFlags: 0

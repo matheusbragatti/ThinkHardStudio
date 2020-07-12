@@ -27,11 +27,12 @@ public class Controller : MonoBehaviour
     public string miniGame;
     public int maxGames;
     public List<int> playedMiniGames;
-    public bool logoPlayed = false;
+    public bool logoPlayed;
 
     void Start()
     {
         maxGames = 4;
+        logoPlayed = false;
     }
 
     void Update()
@@ -92,11 +93,11 @@ public class Controller : MonoBehaviour
                 miniGame = "FlyToNest";
                 break;
 
-            case 3:
+            case 2:
                 miniGame = "StayWithTheCircle";
                 break;
 
-            case 4:
+            case 3:
                 miniGame = "DrawGunScene";
                 break;
 
