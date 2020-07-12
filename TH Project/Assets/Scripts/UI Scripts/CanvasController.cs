@@ -10,18 +10,22 @@ public class CanvasController : MonoBehaviour
     private GameObject mainController;
     private Controller controller;
     public string gamePicked;
-    public VideoPlayer videoPlayer;
+    public VideoPlayer introVideoPlayer;
+    public VideoPlayer logoVideoPlayer;
     public GameObject panel;
     public GameObject playButton;
-    public Text lifesText;
-    public Text miniGamesLeftText;
+
 
     private void Start()
     {
         mainController = GameObject.FindGameObjectWithTag("GameController");
         controller = mainController.GetComponent<Controller>();
-        lifesText.text = controller.lifeCounter + " Lifes left";
-        miniGamesLeftText.text = controller.miniGamesLeft + "Games left";
+        panel.SetActive(false);
+        if (!controller.logoPlayed)
+        {
+            StartCoroutine(playLogo());
+        }
+        
     }
 
     public void startGame()
@@ -38,21 +42,39 @@ public class CanvasController : MonoBehaviour
 
     IEnumerator prepareVideo()
     {
-        videoPlayer.Prepare();
+        introVideoPlayer.Prepare();
         WaitForSeconds waitForSeconds = new WaitForSeconds(1);
-        while (!videoPlayer.isPrepared)
+        while (!introVideoPlayer.isPrepared)
         {
             yield return waitForSeconds;
         }
         panel.SetActive(false);
-        videoPlayer.Play();
-        while (videoPlayer.isPlaying)
+        introVideoPlayer.Play();
+        while (introVideoPlayer.isPlaying)
         {
             yield return waitForSeconds;
         }
         gamePicked = controller.pickRandomGame();
         SceneManager.LoadScene(gamePicked);
     }
+
+    IEnumerator playLogo()
+    {
+        logoVideoPlayer.Prepare();
+        WaitForSeconds waitForSeconds = new WaitForSeconds(1);
+        while (!logoVideoPlayer.isPrepared)
+        {
+            yield return waitForSeconds;
+        }
+        panel.SetActive(false);
+        logoVideoPlayer.Play();
+        while (logoVideoPlayer.isPlaying)
+        {
+            yield return waitForSeconds;
+        }
+        panel.SetActive(true);
+    }
+
 
     public void options()
     {
