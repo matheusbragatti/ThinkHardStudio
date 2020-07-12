@@ -18,8 +18,8 @@ public class TransitionScript : MonoBehaviour
     {
         mainController = GameObject.FindGameObjectWithTag("GameController");
         controller = mainController.GetComponent<Controller>();
-        lifesText.text = controller.lifeCounter + " Lifes left";
-        miniGamesLeftText.text = controller.miniGamesLeft + " Games left";
+        lifesText.text = controller.lifeCounter + "";
+        miniGamesLeftText.text = controller.miniGamesLeft + "";
         backgroundMusic.Play();
     }
 

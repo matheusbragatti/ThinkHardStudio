@@ -40,6 +40,7 @@ public class Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
+            Debug.Log("Exit");
         }
     }
 
